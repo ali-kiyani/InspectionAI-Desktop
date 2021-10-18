@@ -1,14 +1,13 @@
 package com.inspectionAI.dto;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UpdateUIDto {
 
 	private String imageUrl;
 	private boolean isGood = false;
-	private Date dateTime;
+	private LocalDateTime dateTime;
 	private List<DefectCountDto> defects;
 	
 	public List<DefectCountDto> getDefects() {
@@ -29,10 +28,10 @@ public class UpdateUIDto {
 	public void setGood(boolean isGood) {
 		this.isGood = isGood;
 	}
-	public Date getDateTime() {
+	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
 	}
 }

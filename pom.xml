@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.inspectionAI</groupId>
-	<artifactId>javafx-spring-boot</artifactId>
+	<artifactId>inspection-ai-desktop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>javafx-spring-boot</name>
-	<description>Demo project for Spring Boot</description>
+	<name>InspectionAI</name>
+	<description>Desktop App for Inspection AI. Powered By VISIONRD</description>
 
 	<properties>
 		<java.version>11</java.version>

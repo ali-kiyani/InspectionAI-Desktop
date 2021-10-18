@@ -1,23 +1,35 @@
 package com.inspectionAI.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import com.inspectionAI.dto.DefectCountDto;
 
 public class DetectionDto {
 
-	private String ImageUrl;
+	private String imageUrl;
 	private boolean isGood;
+	private LocalDateTime dateTime;
 	private List<DefectCountDto> defects;
 	
-	public String getImageUrl() {
-		return ImageUrl;
+	public LocalDateTime getDateTime() {
+		return dateTime;
 	}
-	public void setImageUrl(String imageUrl) {
-		ImageUrl = imageUrl;
-	}
-	public boolean isGood() {
-		return isGood;
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
 	}
 	public void setGood(boolean isGood) {
+		this.isGood = isGood;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public boolean getIsGood() {
+		return isGood;
+	}
+	public void setIsGood(boolean isGood) {
 		this.isGood = isGood;
 	}
 	public List<DefectCountDto> getDefects() {

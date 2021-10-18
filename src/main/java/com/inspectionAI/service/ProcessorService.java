@@ -1,6 +1,6 @@
 package com.inspectionAI.service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,11 @@ public class ProcessorService {
 	
 	public String process(DetectionDto request) {
 		UpdateUIDto dto = new UpdateUIDto();
-		dto.setDateTime(new Date());
-		dto.setGood(request.isGood());
+		if (request.getDateTime() != null)
+			dto.setDateTime(request.getDateTime());
+		else
+			dto.setDateTime(LocalDateTime.now());
+		dto.setGood(request.getIsGood());
 		dto.setImageUrl(request.getImageUrl());
 		dto.setDefects(request.getDefects());
 		controller.AddNewDetection(dto);
