@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import com.inspectionAI.UIcontroller.InspectionAIController;
+import com.inspectionAI.UIcontroller.InspectionAIUIController;
 import com.inspectionAI.dto.DetectionDto;
 import com.inspectionAI.dto.UpdateUIDto;
 
 @Service
 public class ProcessorService {
 
-	private InspectionAIController controller;
+	private InspectionAIUIController controller;
 	
-	public ProcessorService(InspectionAIController controller) {
+	public ProcessorService(InspectionAIUIController controller) {
 		this.controller = controller;
 	}
 	

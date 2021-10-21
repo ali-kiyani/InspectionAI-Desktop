@@ -19,7 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 @Component
-public class InspectionAIController {
+public class InspectionAIUIController {
 
     @FXML
     public Label label1;
@@ -55,38 +55,71 @@ public class InspectionAIController {
     Series<String, Number> goodSeries = new Series<String, Number>();
     Series<String, Number> defectiveSeries = new Series<String, Number>();    
     String defaultLabel;
-    public InspectionAIController(@Value("${spring.application.ui.default.label}") String defaultLabel) {
+    
+    int totalCount = 0;
+    int goodCount = 0;
+    int defectCount = 0;
+    public InspectionAIUIController(@Value("${spring.application.ui.default.label}") String defaultLabel) {
     	this.defaultLabel = defaultLabel;
     }
     
     public void AddNewDetection(UpdateUIDto dto) {
+    	Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				if (!dto.isGood()) {
+					for (int j = 0; j < dto.getDefects().size(); j++) {
+						boolean found = false;
+						for (int i = 0; i < pieData.size(); i++) {
+							if (dto.getDefects().get(j).getName().equalsIgnoreCase(pieData.get(i).getName())) {
+								pieData.get(i)
+										.setPieValue(pieData.get(i).getPieValue() + dto.getDefects().get(j).getCount());
+								found = true;
+								break;
+							}
+						}
+						if (found == false) {
+							pieData.add(new javafx.scene.chart.PieChart.Data(dto.getDefects().get(j).getName(),
+									dto.getDefects().get(j).getCount()));
+						}
+					}
+				}
+			}
+		});
+    	Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+		    	if (!dto.isGood()) {
+					updateImages(dto);
+		    	}
+			}
+    		
+    	});
+    	Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+		    	if (!dto.isGood()) {
+		    		defectiveSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+		    	} else {
+		    		goodSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+		    	}
+			}
+    	
+    	});
 	    	Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
 			    	if (!dto.isGood()) {
-						total.setText(String.valueOf(Integer.valueOf(total.getText())+1));
-						defective.setText(String.valueOf(Integer.valueOf(defective.getText())+1));
-			    		defectiveSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
-						for (int j = 0; j < dto.getDefects().size(); j++) {
-							boolean found = false;
-							for (int i = 0; i < pieData.size(); i++) {
-								if (dto.getDefects().get(j).getName().equalsIgnoreCase(pieData.get(i).getName())) {
-									pieData.get(i).setPieValue(pieData.get(i).getPieValue()+dto.getDefects().get(j).getCount());
-									found = true;
-									break;
-								}
-							}
-							if (found == false) {
-						    	pieData.add(new javafx.scene.chart.PieChart.Data(dto.getDefects().get(j).getName(), dto.getDefects().get(j).getCount()));
-							}
-						}
-						updateImages(dto);
+			    		defectCount++;
+						defective.setText(String.valueOf(defectCount));
 			    	}
 			    	else {
-						total.setText(String.valueOf(Integer.valueOf(total.getText())+1));
 						good.setText(String.valueOf(Integer.valueOf(good.getText())+1));
-			    		goodSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
 			    	}
+		    		totalCount++;
+					total.setText(String.valueOf(totalCount));
 				}
 			});    	
     }
@@ -122,10 +155,9 @@ public class InspectionAIController {
     	pie.setData(pieData);
     	goodSeries.setName("GOOD");
     	defectiveSeries.setName("DEFECTIVE");
-    	goodSeries.setNode(new Node() {
-		});
+
         ObservableList<XYChart.Series<String, Number>> data = FXCollections.observableArrayList();
-    	data.addAll(goodSeries, defectiveSeries);
+    	data.addAll(defectiveSeries, goodSeries);
     	bar.setData(data);
     }
 }
