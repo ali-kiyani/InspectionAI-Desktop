@@ -40,6 +40,7 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
             stage.setTitle(this.applicationTitle);
             stage.setMaximized(true);
             stage.show();
+            System.out.println("Height: " + stage.getHeight() + " Width: " + stage.getWidth());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

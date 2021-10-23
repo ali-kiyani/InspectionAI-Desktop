@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -14,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
@@ -22,8 +20,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="822.0" prefWidth="1532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inspectionAI.UIcontroller.InspectionAIUIController">
-   <Rectangle arcHeight="5.0" arcWidth="5.0" height="821.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="33.0">
+<AnchorPane prefHeight="1066.0" prefWidth="1936.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inspectionAI.UIcontroller.InspectionAIUIController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="1066.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="33.0">
       <fill>
          <RadialGradient centerX="0.3590308454068222" centerY="0.4659091053587018" radius="0.5">
             <stops>
@@ -41,222 +39,225 @@
          </RadialGradient>
       </fill>
    </Rectangle>
-   <ImageView fitHeight="44.0" fitWidth="200.0" layoutX="693.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="44.0" fitWidth="200.0" layoutX="901.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@transparent%20file%20(2).png" />
       </image>
    </ImageView>
-   <GridPane hgap="4.0" layoutX="43.0" layoutY="60.0" prefHeight="426.0" prefWidth="1470.0">
+   <GridPane cache="true" cacheHint="SPEED" gridLinesVisible="true" hgap="5.0" layoutX="56.0" layoutY="64.0" prefHeight="494.0" prefWidth="1841.0">
      <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.4000244140625" minWidth="10.0" prefWidth="382.3999755859375" />
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.6000000000001" minWidth="10.0" prefWidth="360.0000244140626" />
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
      </columnConstraints>
      <rowConstraints>
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <VBox prefHeight="398.0" prefWidth="392.0" style="-fx-border-style: solid; -fx-border-width: 5; -fx-border-color: grey;">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey; -fx-border-style: solid; -fx-border-width: 5;">
             <children>
-               <ImageView fx:id="img1" fitHeight="360.0" fitWidth="375.0" pickOnBounds="true">
+               <ImageView fx:id="img1" fitHeight="398.0" fitWidth="441.0" layoutX="9.0" layoutY="8.0" pickOnBounds="true">
                   <image>
                      <Image url="@default.jpg" />
                   </image>
                </ImageView>
-               <Label fx:id="label1" prefHeight="52.0" prefWidth="346.0" text="Label">
-                  <VBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </VBox.margin>
+               <Label fx:id="label1" alignment="CENTER" layoutX="12.0" layoutY="414.0" prefHeight="59.0" prefWidth="436.0" text="-" textAlignment="CENTER">
                   <font>
-                     <Font name="System Bold" size="32.0" />
+                     <Font name="System Bold" size="45.0" />
                   </font>
                </Label>
             </children>
-         </VBox>
-         <VBox prefHeight="398.0" prefWidth="360.0" style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: grey;" GridPane.columnIndex="1">
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-               <ImageView fx:id="img2" fitHeight="338.0" fitWidth="368.0" pickOnBounds="true">
+               <ImageView fx:id="img2" fitHeight="365.0" fitWidth="455.0" layoutX="3.0" layoutY="30.0" pickOnBounds="true">
                   <image>
                      <Image url="@default.jpg" />
                   </image>
-                  <VBox.margin>
-                     <Insets top="15.0" />
-                  </VBox.margin>
                </ImageView>
-               <Label fx:id="label2" prefHeight="54.0" prefWidth="333.0" text="Label">
+               <Label fx:id="label2" alignment="CENTER" layoutX="7.0" layoutY="411.0" prefHeight="45.0" prefWidth="447.0" text="-">
                   <font>
-                     <Font name="System Bold" size="26.0" />
+                     <Font name="System Bold" size="30.0" />
                   </font>
-                  <VBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </VBox.margin>
                </Label>
             </children>
-         </VBox>
-         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: grey;" GridPane.columnIndex="2">
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
             <children>
-               <ImageView fx:id="img3" fitHeight="338.0" fitWidth="349.0" pickOnBounds="true">
+               <ImageView fx:id="img3" fitHeight="365.0" fitWidth="455.0" layoutX="3.0" layoutY="30.0" pickOnBounds="true">
                   <image>
                      <Image url="@default.jpg" />
                   </image>
-                  <VBox.margin>
-                     <Insets top="15.0" />
-                  </VBox.margin>
                </ImageView>
-               <Label fx:id="label3" prefHeight="54.0" prefWidth="330.0" text="Label">
+               <Label fx:id="label3" alignment="CENTER" layoutX="7.0" layoutY="411.0" prefHeight="45.0" prefWidth="447.0" text="-">
                   <font>
-                     <Font name="System Bold" size="26.0" />
+                     <Font name="System Bold" size="30.0" />
                   </font>
-                  <VBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </VBox.margin>
                </Label>
             </children>
-         </VBox>
-         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: grey;" GridPane.columnIndex="3">
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
             <children>
-               <ImageView fx:id="img4" fitHeight="338.0" fitWidth="350.0" pickOnBounds="true">
+               <ImageView fx:id="img4" fitHeight="365.0" fitWidth="455.0" layoutX="3.0" layoutY="30.0" pickOnBounds="true">
                   <image>
                      <Image url="@default.jpg" />
                   </image>
-                  <VBox.margin>
-                     <Insets top="15.0" />
-                  </VBox.margin>
                </ImageView>
-               <Label fx:id="label4" prefHeight="54.0" prefWidth="350.0" text="Label">
+               <Label fx:id="label4" alignment="CENTER" layoutX="7.0" layoutY="411.0" prefHeight="45.0" prefWidth="447.0" text="-">
                   <font>
-                     <Font name="System Bold" size="26.0" />
+                     <Font name="System Bold" size="30.0" />
                   </font>
-                  <VBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </VBox.margin>
                </Label>
             </children>
-         </VBox>
+         </AnchorPane>
       </children>
    </GridPane>
-   <GridPane layoutX="51.0" layoutY="492.0" prefHeight="310.0" prefWidth="356.0">
+   <GridPane alignment="CENTER" cache="true" cacheHint="SPEED" hgap="20.0" layoutX="56.0" layoutY="558.0" prefHeight="117.0" prefWidth="1854.0">
      <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
      </columnConstraints>
      <rowConstraints>
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" height="99.0" layoutX="32.0" layoutY="9.0" stroke="BLACK" width="540.0">
+                  <fill>
+                     <LinearGradient endX="1.0" endY="1.0" startX="0.07575753963354864" startY="0.9469696789076835">
+                        <stops>
+                           <Stop>
+                              <color>
+                                 <Color red="0.2426900565624237" green="0.36888888478279114" blue="0.8736842274665833" />
+                              </color>
+                           </Stop>
+                           <Stop offset="1.0">
+                              <color>
+                                 <Color red="0.3845613896846771" green="0.5090058445930481" blue="0.75789475440979" />
+                              </color>
+                           </Stop>
+                        </stops>
+                     </LinearGradient>
+                  </fill>
+               </Rectangle>
+               <HBox layoutX="29.0" layoutY="10.0" prefHeight="100.0" prefWidth="541.0">
+                  <children>
+                     <Label alignment="CENTER" prefHeight="100.0" prefWidth="263.0" text="Total" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="57.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="total" alignment="CENTER" contentDisplay="CENTER" prefHeight="98.0" prefWidth="278.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="64.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <children>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" height="99.0" layoutX="32.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="540.0">
+                  <fill>
+                     <LinearGradient endX="1.0" endY="1.0" startX="0.2575757286765359" startY="0.9469696789076835">
+                        <stops>
+                           <Stop>
+                              <color>
+                                 <Color red="0.14814814925193787" green="0.800000011920929" blue="0.7782716155052185" />
+                              </color>
+                           </Stop>
+                           <Stop offset="1.0">
+                              <color>
+                                 <Color red="0.5687693357467651" green="0.8105263113975525" blue="0.3572319746017456" />
+                              </color>
+                           </Stop>
+                        </stops>
+                     </LinearGradient>
+                  </fill>
+               </Rectangle>
+               <HBox layoutX="29.0" layoutY="10.0" prefHeight="100.0" prefWidth="544.0">
+                  <children>
+                     <Label alignment="CENTER" prefHeight="100.0" prefWidth="263.0" text="GOOD" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="57.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="good" alignment="CENTER" prefHeight="98.0" prefWidth="279.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="64.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <children>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" height="99.0" layoutX="32.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="540.0">
+                  <fill>
+                     <LinearGradient endX="1.0" endY="1.0" startX="0.4347982042572477" startY="0.8484848340352377">
+                        <stops>
+                           <Stop>
+                              <color>
+                                 <Color red="1.0" green="0.2888889014720917" blue="0.2888889014720917" />
+                              </color>
+                           </Stop>
+                           <Stop offset="1.0">
+                              <color>
+                                 <Color red="1.0" green="0.6328703761100769" blue="0.1527777761220932" />
+                              </color>
+                           </Stop>
+                        </stops>
+                     </LinearGradient>
+                  </fill>
+               </Rectangle>
+               <HBox layoutX="32.0" layoutY="10.0" prefHeight="100.0" prefWidth="544.0">
+                  <children>
+                     <Label alignment="CENTER" prefHeight="100.0" prefWidth="263.0" text="DEFECT" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="57.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="defective" alignment="CENTER" prefHeight="98.0" prefWidth="277.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="64.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
+            </children>
+         </AnchorPane>
+      </children>
+   </GridPane>
+   <GridPane hgap="10.0" layoutX="56.0" layoutY="675.0" prefHeight="333.0" prefWidth="1841.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" height="98.0" stroke="BLACK" strokeType="INSIDE" width="361.0">
-            <fill>
-               <LinearGradient endX="1.0" endY="1.0" startX="0.07575753963354864" startY="0.9469696789076835">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color red="0.2426900565624237" green="0.36888888478279114" blue="0.8736842274665833" />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="0.3845613896846771" green="0.5090058445930481" blue="0.75789475440979" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </fill>
-         </Rectangle>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" height="98.0" stroke="BLACK" strokeType="INSIDE" width="361.0" GridPane.rowIndex="1">
-            <fill>
-               <LinearGradient endX="1.0" endY="1.0" startX="0.2575757286765359" startY="0.9469696789076835">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color red="0.14814814925193787" green="0.800000011920929" blue="0.7782716155052185" />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="0.5687693357467651" green="0.8105263113975525" blue="0.3572319746017456" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </fill>
-         </Rectangle>
-         <Rectangle arcHeight="5.0" arcWidth="5.0" height="98.0" stroke="BLACK" strokeType="INSIDE" width="361.0" GridPane.rowIndex="2">
-            <fill>
-               <LinearGradient endX="1.0" endY="1.0" startX="0.2878787729776267" startY="0.8484848340352377">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color red="1.0" green="0.2888889014720917" blue="0.2888889014720917" />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="1.0" green="0.5814814567565918" blue="0.5814814567565918" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </fill>
-         </Rectangle>
-         <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-               <Label alignment="CENTER" prefHeight="100.0" prefWidth="182.0" text="Total" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="41.0" />
-                  </font>
-               </Label>
-               <Label fx:id="total" alignment="CENTER" prefHeight="98.0" prefWidth="224.0" text="0" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="50.0" />
-                  </font>
-               </Label>
-            </children>
-         </HBox>
-         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-            <children>
-               <Label alignment="CENTER" prefHeight="100.0" prefWidth="167.0" text="GOOD" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="41.0" />
-                  </font>
-               </Label>
-               <Label fx:id="good" alignment="CENTER" prefHeight="98.0" prefWidth="224.0" text="0" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="50.0" />
-                  </font>
-               </Label>
-            </children>
-         </HBox>
-         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
-            <children>
-               <Label alignment="CENTER" prefHeight="100.0" prefWidth="206.0" text="DEFECT" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="41.0" />
-                  </font>
-               </Label>
-               <Label fx:id="defective" alignment="CENTER" prefHeight="98.0" prefWidth="224.0" text="0" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="50.0" />
-                  </font>
-               </Label>
-            </children>
-         </HBox>
+         <PieChart fx:id="pie" animated="false" cache="true" cacheHint="SPEED" legendSide="LEFT" prefHeight="206.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-color: grey; -fx-border-width: 1;" title="Defect Ratio">
+            <effect>
+               <Glow />
+            </effect>
+         </PieChart>
+         <StackedBarChart fx:id="bar" animated="false" cache="true" cacheHint="SPEED" centerShape="false" horizontalZeroLineVisible="false" legendSide="LEFT" prefHeight="332.0" prefWidth="921.0" style="-fx-border-width: 1; -fx-border-color: grey; -fx-border-style: solid;" title="Good-Defective Ratio" verticalGridLinesVisible="false" verticalZeroLineVisible="false" GridPane.columnIndex="1">
+           <xAxis>
+             <CategoryAxis animated="false" cache="true" cacheHint="SPEED" side="BOTTOM" />
+           </xAxis>
+           <yAxis>
+             <NumberAxis animated="false" cache="true" cacheHint="SPEED" side="LEFT" />
+           </yAxis>
+            <effect>
+               <Glow />
+            </effect>
+         </StackedBarChart>
       </children>
    </GridPane>
-   <StackedBarChart fx:id="bar" animated="false" cache="true" cacheHint="SPEED" centerShape="false" horizontalZeroLineVisible="false" layoutX="971.0" layoutY="492.0" prefHeight="310.0" prefWidth="544.0" style="-fx-border-width: 1; -fx-border-color: grey; -fx-border-style: solid;" title="Good-Defective Ratio" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-     <xAxis>
-       <CategoryAxis animated="false" cache="true" cacheHint="SPEED" side="BOTTOM" />
-     </xAxis>
-     <yAxis>
-       <NumberAxis animated="false" cache="true" cacheHint="SPEED" side="LEFT" />
-     </yAxis>
-      <effect>
-         <Glow />
-      </effect>
-   </StackedBarChart>
-   <PieChart fx:id="pie" animated="false" cache="true" cacheHint="SPEED" layoutX="426.0" layoutY="492.0" prefHeight="310.0" prefWidth="540.0" style="-fx-border-style: solid; -fx-border-color: grey; -fx-border-width: 1;" title="Defect Ratio">
-      <effect>
-         <Glow />
-      </effect></PieChart>
 </AnchorPane>

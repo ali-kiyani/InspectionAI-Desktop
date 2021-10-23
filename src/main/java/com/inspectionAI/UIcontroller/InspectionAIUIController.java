@@ -1,22 +1,31 @@
 package com.inspectionAI.UIcontroller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.inspectionAI.dto.UpdateUIDto;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 @Component
 public class InspectionAIUIController {
@@ -59,6 +68,8 @@ public class InspectionAIUIController {
     int totalCount = 0;
     int goodCount = 0;
     int defectCount = 0;
+	double duration = 0.7;
+
     public InspectionAIUIController(@Value("${spring.application.ui.default.label}") String defaultLabel) {
     	this.defaultLabel = defaultLabel;
     }
@@ -72,15 +83,22 @@ public class InspectionAIUIController {
 						boolean found = false;
 						for (int i = 0; i < pieData.size(); i++) {
 							if (dto.getDefects().get(j).getName().equalsIgnoreCase(pieData.get(i).getName())) {
-								pieData.get(i)
-										.setPieValue(pieData.get(i).getPieValue() + dto.getDefects().get(j).getCount());
+								pieData.get(i).setPieValue(pieData.get(i).getPieValue() + dto.getDefects().get(j).getCount());
 								found = true;
+								Tooltip tip = new Tooltip(String.valueOf(pieData.get(i).getPieValue()));
+				    			tip.setShowDelay(Duration.seconds(duration));
+				    			Tooltip.install(pieData.get(i).getNode(), tip);
 								break;
 							}
 						}
 						if (found == false) {
 							pieData.add(new javafx.scene.chart.PieChart.Data(dto.getDefects().get(j).getName(),
 									dto.getDefects().get(j).getCount()));
+							int index = j;
+							List<javafx.scene.chart.PieChart.Data> dataList = pieData.stream().filter(x -> x.getName().equals(dto.getDefects().get(index).getName())).collect(Collectors.toList());
+							Tooltip tip = new Tooltip(String.valueOf(dataList.get(0).getPieValue()));
+			    			tip.setShowDelay(Duration.seconds(duration));
+			    			Tooltip.install(dataList.get(0).getNode(), tip);
 						}
 					}
 				}
@@ -101,9 +119,36 @@ public class InspectionAIUIController {
 			@Override
 			public void run() {
 		    	if (!dto.isGood()) {
-		    		defectiveSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+		    		List<Data<String, Number>> filterList = defectiveSeries.getData().stream().filter(x -> x.getXValue().equals(String.valueOf(dto.getDateTime().getHour()))).collect(Collectors.toList());
+		    		if (filterList.size() > 0) {
+		    			int val = filterList.get(0).getYValue().intValue()+1;
+		    			filterList.get(0).setYValue(val);
+		    			Tooltip tip = new Tooltip(filterList.get(0).getYValue().toString());
+		    			tip.setShowDelay(Duration.seconds(duration));
+		    			Tooltip.install(filterList.get(0).getNode(), tip);
+		    		} else {
+		    			defectiveSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+			    		List<Data<String, Number>> getCurrentNode = defectiveSeries.getData().stream().filter(x -> x.getXValue().equals(String.valueOf(dto.getDateTime().getHour()))).collect(Collectors.toList());
+			    		Tooltip tip = new Tooltip(getCurrentNode.get(0).getYValue().toString());
+		    			tip.setShowDelay(Duration.seconds(duration));
+		    			Tooltip.install(getCurrentNode.get(0).getNode(), tip);
+		    		}
+		    		
 		    	} else {
-		    		goodSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+		    		List<Data<String, Number>> filterList = goodSeries.getData().stream().filter(x -> x.getXValue().equals(String.valueOf(dto.getDateTime().getHour()))).collect(Collectors.toList());
+		    		if (filterList.size() > 0) {
+		    			int val = filterList.get(0).getYValue().intValue()+1;
+		    			filterList.get(0).setYValue(val);
+		    			Tooltip tip = new Tooltip(filterList.get(0).getYValue().toString());
+		    			tip.setShowDelay(Duration.seconds(duration));
+		    			Tooltip.install(filterList.get(0).getNode(), tip);
+		    		} else {
+		    			goodSeries.getData().add(new XYChart.Data<>(String.valueOf(dto.getDateTime().getHour()), 1));
+			    		List<Data<String, Number>> getCurrentNode = goodSeries.getData().stream().filter(x -> x.getXValue().equals(String.valueOf(dto.getDateTime().getHour()))).collect(Collectors.toList());
+			    		Tooltip tip = new Tooltip(getCurrentNode.get(0).getYValue().toString());
+		    			tip.setShowDelay(Duration.seconds(duration));
+		    			Tooltip.install(getCurrentNode.get(0).getNode(), tip);
+		    		}
 		    	}
 			}
     	
