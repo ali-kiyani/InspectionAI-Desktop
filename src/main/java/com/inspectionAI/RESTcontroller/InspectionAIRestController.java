@@ -17,7 +17,7 @@ public class InspectionAIRestController {
 	private ProcessorService processorSerrvice;
 	
 	@PostMapping("/detection")
-	public String detection(@RequestBody DetectionDto request) {
-		return processorSerrvice.process(request);
+	public void detection(@RequestBody DetectionDto request) {
+		processorSerrvice.process(request);
     }
 }

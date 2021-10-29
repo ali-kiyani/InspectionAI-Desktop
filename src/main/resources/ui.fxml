@@ -127,7 +127,7 @@
             <children>
                <Rectangle arcHeight="5.0" arcWidth="5.0" height="99.0" layoutX="32.0" layoutY="9.0" stroke="BLACK" width="540.0">
                   <fill>
-                     <LinearGradient endX="1.0" endY="1.0" startX="0.07575753963354864" startY="0.9469696789076835">
+                     <LinearGradient endX="1.0" endY="1.0" startX="0.3174637007709894" startY="0.9469696789076835">
                         <stops>
                            <Stop>
                               <color>
@@ -136,7 +136,7 @@
                            </Stop>
                            <Stop offset="1.0">
                               <color>
-                                 <Color red="0.3845613896846771" green="0.5090058445930481" blue="0.75789475440979" />
+                                 <Color red="0.5185763835906982" green="0.3020833432674408" blue="0.75" />
                               </color>
                            </Stop>
                         </stops>
