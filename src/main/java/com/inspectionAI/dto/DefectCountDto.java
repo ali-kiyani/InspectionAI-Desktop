@@ -3,14 +3,15 @@ package com.inspectionAI.dto;
 public class DefectCountDto {
 
 	private Integer defectId;
+	private String name;
+	private int count;
+	
 	public Integer getDefectId() {
 		return defectId;
 	}
 	public void setDefectId(Integer defectId) {
 		this.defectId = defectId;
 	}
-	private String name;
-	private int count;
 	
 	public String getName() {
 		return name;

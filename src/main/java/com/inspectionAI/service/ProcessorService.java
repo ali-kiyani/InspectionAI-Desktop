@@ -33,16 +33,26 @@ public class ProcessorService {
 	private String baseUrl;
 	private String bulkUrl;
 	private Integer transferLimit;
+	private Integer productId;
+	private Integer stageId;
+	private Integer assemblyLineId;
 	
 	public ProcessorService(@Value("${main.server.url.base}") String serverBaseUrl, 
 			@Value("${main.server.url.bulk.detections}") String serverBulkUrl,
 			@Value("${main.server.transfer.limit}") Integer transferLimit,
+			@Value("${product.id}") Integer productId,
+			@Value("${produuct.stage.id}") Integer stageId,
+			@Value("${product.stage.assembly.id}") Integer assemblyLineId,
 			InspectionAIUIController controller) {
+		
 		this.controller = controller;
 		this.detectionsBuffer = Collections.synchronizedList(new ArrayList<TransferDetectionsDto>());
 		this.baseUrl = serverBaseUrl;
 		this.bulkUrl = serverBulkUrl;
 		this.transferLimit = transferLimit;
+		this.productId = productId;
+		this.stageId = stageId;
+		this.assemblyLineId = assemblyLineId;
 	}
 	
 	public void process(DetectionDto request) {
@@ -61,23 +71,25 @@ public class ProcessorService {
 	private void bufferDetection(DetectionDto dto) {
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 		TransferDetectionsDto detection = new TransferDetectionsDto();
-		detection.setProductId(dto.getProductId());
-		detection.setStageId(dto.getStageId());
-		detection.setAssemblyLineId(dto.getAssemblyLineId());
+		detection.setProductId(productId);
+		detection.setStageId(stageId);
+		detection.setAssemblyLineId(assemblyLineId);
 		detection.setDetectionTime(dto.getDateTime().format(f));
 		detection.setImageUrl(dto.getImageUrl());
 		detection.setAssemblyDefects(new ArrayList<TransferDetectsDto>());
 		int defectsCount = 0;
-		for (DefectCountDto defectDto : dto.getDefects()) {
-			for (int i = 0; i < defectDto.getCount(); i++) {
-				TransferDetectsDto tDefectDto = new TransferDetectsDto();
-				tDefectDto.setConfidence(0.0);
-				tDefectDto.setDefectId(defectDto.getDefectId());
-				tDefectDto.setDetectionTime(dto.getDateTime().format(f));
-				tDefectDto.setStageId(dto.getStageId());
-				tDefectDto.setAssemblyDetectionId(0);
-				detection.getAssemblyDefects().add(tDefectDto);
-				defectsCount++;
+		if (dto.getIsGood() == false) {
+			for (DefectCountDto defectDto : dto.getDefects()) {
+				for (int i = 0; i < defectDto.getCount(); i++) {
+					TransferDetectsDto tDefectDto = new TransferDetectsDto();
+					tDefectDto.setConfidence(0.0);
+					tDefectDto.setDefectId(defectDto.getDefectId());
+					tDefectDto.setDetectionTime(dto.getDateTime().format(f));
+					tDefectDto.setStageId(stageId);
+					tDefectDto.setAssemblyDetectionId(0);
+					detection.getAssemblyDefects().add(tDefectDto);
+					defectsCount++;
+				}
 			}
 		}
 		detection.setDefectsCount(defectsCount);
